@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Tables, columns, indexes, etc.
+// npx prisma studio
+// npx prisma migrate dev/deploy (generate schema)
+// curl http://localhost/host:3333/users
+// migration: historico de alterações no banco de dados, sql
+
+model Feedback {
+  id String @id @default(uuid())
+
+  type       String
+  comment    String
+  screenshot String?
+
+  @@map("feedbacks")
+}
